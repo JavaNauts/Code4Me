@@ -9,6 +9,10 @@ public class TestController {
     @GetMapping("/")
     @ResponseBody
     public String getHome(){
+<<<<<<< Updated upstream
         return "index.html";
+=======
+        return "Proof of Life";
+>>>>>>> Stashed changes
     }
 }
