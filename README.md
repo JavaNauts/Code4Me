@@ -54,3 +54,6 @@ The app handles username and password for the client, utilizing authentication f
 
 ### Usability
 All links are functional and route to pages appropriately. Payment system allows user sign-in to the payment API. Developers are notified when services are purchased and recieve payment. Clients are notified of payment receipt, and services.
+
+#### Issues
+- *Upon REACT initializtion, getting message "We found potential security vulnerabilities in your dependencies."*
