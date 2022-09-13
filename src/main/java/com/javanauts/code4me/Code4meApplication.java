@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @SpringBootApplication
 @Controller
 public class Code4meApplication {
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
-		return "Hello World!";
-	}
+//	@RequestMapping("/")
+//	@ResponseBody
+//	String home() {
+//		return "Hello World!";
+//	}
 	public static void main(String[] args) {
 		SpringApplication.run(Code4meApplication.class, args);
 	}
