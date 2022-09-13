@@ -22,7 +22,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	compile group 'org.webjars', name: 'bootstrap', version: '4.0.0-2'
+//	compile group 'org.webjars', name: 'bootstrap', version: '4.0.0-2'
 }
 
 tasks.named('test') {
