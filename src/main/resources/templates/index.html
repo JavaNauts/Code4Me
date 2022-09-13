@@ -6,27 +6,67 @@
 <!--    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>-->
 </head>
 <body>
-<header>
-    <h1>Code4Me</h1>
-        <p>logo here</p>
-    <!--nav bar-->
-<!--        client sign up, dev login/logout, client log-in/logout-->
-</header>
-<main>
-    <p>Site Description goes here</p>
-<!--    search bar-->
-<!--    keywords-->
-<!--    featured profiles-->
-    <button>Dev Signup</button>
-
-</main>
-<footer>
-<!--    copyright, about-us, social media (stretch)-->
-</footer>
-
-
-
-
+    <header>
+        <img src="Logo.png" class="img-thumbnail" alt="Code4Me logo">
+        <h1>Code4Me</h1>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sign-Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Log-In</a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link disabled"></a>-->
+<!--            </li>-->
+        </ul>
+    </header>
+    <main>
+        <div>
+            <p></p>
+            <br/><br/>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <section>
+            <p>Looking to sell your work?</p>
+            <p class="nav-link" href="#">Sign up here</p>
+        </section>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© Copyright, Code4Me</p>
+        <i class="bi bi-github"></i>
+        <i class="bi bi-linkedin"></i>
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-twitter"></i>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">About Us</a>
+            </li>
+        </ul>
+    </footer>
 <!--<script th:src="@{/assets/jquery/jquery.min.js}"></script>-->
 <!--<script th:src="@{/assets/popper.js/popper.min.js}"></script>-->
 <!--<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>-->
