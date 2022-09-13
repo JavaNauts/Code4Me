@@ -9,6 +9,6 @@ public class TestController {
     @GetMapping("/")
     @ResponseBody
     public String getHome(){
-        return "index.js";
+        return "Proof of Life";
     }
 }
