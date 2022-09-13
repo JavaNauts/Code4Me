@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TestController {
     @GetMapping("/")
-    @ResponseBody
     public String getHome(){
-        return "Proof of Life";
+        return "index";
     }
 }
