@@ -1,14 +1,11 @@
 package com.javanauts.code4me.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.lang.reflect.Array;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-public class devUser extends appUser{
+public class Profile {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,10 +16,13 @@ public class devUser extends appUser{
     private String projectOne;
     private  String projectTwo;
 
-    protected devUser() {
+//    @OneToOne
+//    AppUser appUser;
+    protected Profile() {
     }
 
-    public devUser(String bio, ArrayList<String> skills, String gitHubLink, String projectOne, String projectTwo, ArrayList<String> services) {
+    public Profile(String bio, ArrayList<String> skills, String gitHubLink, String projectOne, String projectTwo, ArrayList<String> services) {
+
         this.bio = bio;
         this.skills = skills;
         this.gitHubLink = gitHubLink;
