@@ -7,8 +7,6 @@ import javax.persistence.Id;
 
 
 public class appUser {
-
-
     private String userName;
     private String password;
     private String firstName;
