@@ -2,6 +2,8 @@ package com.javanauts.code4me.controller;
 
 import com.javanauts.code4me.models.AppUser;
 import com.javanauts.code4me.models.Profile;
+import com.javanauts.code4me.models.Service;
+import com.javanauts.code4me.models.Skill;
 import com.javanauts.code4me.repository.AppUserRepo;
 import com.javanauts.code4me.repository.ProfileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -82,8 +85,8 @@ public class UserController {
     @PostMapping("profile/{username}")
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
-                                     ArrayList<String> skills,
-                                     ArrayList<String> services, String gitHubLink
+                                     List<Skill> skills,
+                                     List<Service> services, String gitHubLink
             , String projectOne, String projectOneDesc, String projectTwo,
                                      String projectTwoDesc,
                                      RedirectAttributes redir){

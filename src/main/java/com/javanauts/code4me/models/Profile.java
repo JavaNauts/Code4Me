@@ -20,10 +20,10 @@ public class Profile {
     @OneToOne
     AppUser appUser;
 
-    @OneToMany(mappedBy = "Profile")
+    @OneToMany(mappedBy = "profile")
     public List<Service> services;
 
-    @OneToMany(mappedBy = "Profile")
+    @OneToMany(mappedBy = "profile")
     public List<Skill> skills;
 
     protected Profile() {
