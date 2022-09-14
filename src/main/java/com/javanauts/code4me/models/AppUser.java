@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +15,7 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    private String userName;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
@@ -31,9 +30,9 @@ public class AppUser {
     protected AppUser() {
     }
 
-    public AppUser(String userName, String password, String firstName,
+    public AppUser(String username, String password, String firstName,
                    String lastName, String email) {
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,12 +44,12 @@ public class AppUser {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

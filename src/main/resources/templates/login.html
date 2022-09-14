@@ -6,6 +6,17 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
+<h1>Login</h1>
+<h2>(or sign up <a href="/signup">here</a>)</h2>
+<form action="/login" method="post">
+    <label>Username</label>
+    <input type="text" name="username"/>
+
+    <label>Password</label>
+    <input type="password" name="password"/>
+
+    <input type="submit" value="Log in"/>
+</form>
     <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
