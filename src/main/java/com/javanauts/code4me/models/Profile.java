@@ -16,8 +16,8 @@ public class Profile {
     private String projectOne;
     private  String projectTwo;
 
-//    @OneToOne
-//    AppUser appUser;
+    @OneToOne
+    AppUser appUser;
     protected Profile() {
     }
 
