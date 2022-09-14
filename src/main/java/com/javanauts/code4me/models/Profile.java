@@ -2,6 +2,7 @@ package com.javanauts.code4me.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Profile {
@@ -10,8 +11,6 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String bio;
-    private ArrayList<String> skills;
-    private ArrayList<String> services;
     private String gitHubLink;
     private String projectOne;
     private String projectOneDesc;
@@ -20,13 +19,20 @@ public class Profile {
 
     @OneToOne
     AppUser appUser;
+
+    @OneToMany(mappedBy = "Profile")
+    public List<Service> services;
+
+    @OneToMany(mappedBy = "Profile")
+    public List<Skill> skills;
+
     protected Profile() {
     }
 
-    public Profile(String bio, ArrayList<String> skills, String gitHubLink,
+    public Profile(String bio, List<Skill> skills, String gitHubLink,
                    String projectOne, String projectOneDesc, String projectTwo,
                    String projectTwoDesc,
-                   ArrayList<String> services) {
+                   List<Service> services) {
 
         this.bio = bio;
         this.skills = skills;
@@ -51,11 +57,11 @@ public class Profile {
         this.bio = bio;
     }
 
-    public ArrayList<String> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
@@ -106,11 +112,11 @@ public class Profile {
         this.projectTwo = projectTwo;
     }
 
-    public ArrayList<String> getServices() {
+    public List<Service> getServices() {
         return services;
     }
 
-    public void setServices(ArrayList<String> services) {
+    public void setServices(List<Service> services) {
         this.services = services;
     }
 }
