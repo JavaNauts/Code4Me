@@ -9,13 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
-import java.net.URISyntaxException;
+
 import java.security.Principal;
 
 @Controller
@@ -66,42 +65,6 @@ public class UserController {
         AppUser appUserFromDb = (AppUser) appUserRepo.findByUsername(username);
         return new RedirectView("/");
     }
-    @GetMapping("/checkout")
-    public String getCheckout() {
 
-        return "checkout";
-    }
-
-    @GetMapping("/capture")
-    public String captureOrder(){
-        return "";
-    }
-//Paypal things
-//    @PostMapping
-//    public String placeOrder(@RequestParam Double amountId, HttpServletRequest request){
-//        final URI returnUrl = buildReturnUrl(request);
-//        return "";
-//    }
-//
-//    private URI buildReturnUrl(HttpServletRequest request) {
-//        try {
-//            URI requestUri = URI.create(request.getRequestURL().toString());
-//            return new URI(requestUri.getScheme(),
-//                    requestUri.getUserInfo(),
-//                    requestUri.getHost(),
-//                    requestUri.getPort(),
-//                    "/orders/capture",
-//                    null, null);
-//        } catch (URISyntaxException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    @PostMapping
-//    public String placeOrder(@RequestParam Double totalAmount, HttpServletRequest request){
-//        final URI returnUrl = buildReturnUrl(request);
-//        CreatedOrder createdOrder = paymentService.createOrder(totalAmount, returnUrl);
-//        return "redirect:"+createdOrder.getApprovalLink();
-//    }
 
 }
