@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Nav Header</title>
+</head>
+<body>
+<h3 th:if="${username}"
+    th:text="'Current User: ' + ${username}"></h3>
+<nav th:if="${username}" th:fragment="site-user"
+     th:text="'Current User: ' + ${username}"></nav>
+<img src="../Logo.png" class="img-thumbnail" alt="Code4Me logo">
+</body>
+</html>

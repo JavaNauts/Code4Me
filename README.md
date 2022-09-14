@@ -7,6 +7,10 @@
 *Yari Velazquez*   
 *Stanley Wilder*   
 
+## Team Agreement
+
+[Team Agreement README](https://github.com/mnmason86/401-Midterm-Team-Agreement/blob/main/README.md)
+
 ## Project Vision
 
 Our vision for the **Code4Me** App is to provide a platform where developers can present their skill set for client consideration. Clients can view developers' profiles with past projects, biographies, available services, contact information. Clients can also book and pay for services a developer offers. 
@@ -22,7 +26,7 @@ Our vision for the **Code4Me** App is to provide a platform where developers can
 ## Scope
 ### In
 #### Features / Functional Requirements
-- Developers can create profiles with projects, skills, and  for client consideration.
+- Developers can create profiles with projects and skills for client consideration.
 - Developers and clients can log in and out securely.
 - Clients can create a user profile to access the payment system.
 - Clients can search for developers using keywords which match a developer's skills.
@@ -32,7 +36,7 @@ Our vision for the **Code4Me** App is to provide a platform where developers can
 - Our app will not guarantee that work will be completed by a developer. The responsibility falls to the client and developer do decide upon their terms of agreement.
 
 ### Minimum Viable Product
-- Storefront-style front-end which utilizes React
+- Storefront-style front-end which utilizes Thymeleaf and Bootstrap
 - Developers can create a profile with skills, services, and links to past projects
 - Clients can search for developers via keywords
 - A payment system will be implemented for services
