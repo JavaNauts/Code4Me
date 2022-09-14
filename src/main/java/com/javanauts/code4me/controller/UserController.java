@@ -40,7 +40,7 @@ public class UserController {
     public String getSignup(Principal p, Model m){
         if(p != null){
             String username = p.getName();
-            AppUser appUser = appUserRepo.findByUsername(username);
+            AppUser appUser = (AppUser) appUserRepo.findByUsername(username);
             m.addAttribute("appUser", appUser);
         }
         return "signup";
