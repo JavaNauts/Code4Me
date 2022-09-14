@@ -53,7 +53,7 @@ public class UserController {
     }
     @PostMapping("/login")
     public RedirectView loginUser(String username, String password){
-        AppUser appUserFromDb = appUserRepo.findByUsername(username);
+        AppUser appUserFromDb = (AppUser) appUserRepo.findByUsername(username);
         return new RedirectView("/");
     }
 }
