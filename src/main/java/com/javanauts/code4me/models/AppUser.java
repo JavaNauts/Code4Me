@@ -1,14 +1,11 @@
 package com.javanauts.code4me.models;
 
-<<<<<<< HEAD:src/main/java/com/javanauts/code4me/models/appUser.java
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-public class appUser {
-=======
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +16,6 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
->>>>>>> c04c7563ce0b65b01aef36cfa86e81b78c236768:src/main/java/com/javanauts/code4me/models/AppUser.java
     private String userName;
     private String password;
     private String firstName;
