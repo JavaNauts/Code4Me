@@ -14,20 +14,27 @@ public class Profile {
     private ArrayList<String> services;
     private String gitHubLink;
     private String projectOne;
+    private String projectOneDesc;
     private  String projectTwo;
+    private String projectTwoDesc;
 
     @OneToOne
     AppUser appUser;
     protected Profile() {
     }
 
-    public Profile(String bio, ArrayList<String> skills, String gitHubLink, String projectOne, String projectTwo, ArrayList<String> services) {
+    public Profile(String bio, ArrayList<String> skills, String gitHubLink,
+                   String projectOne, String projectOneDesc, String projectTwo,
+                   String projectTwoDesc,
+                   ArrayList<String> services) {
 
         this.bio = bio;
         this.skills = skills;
         this.gitHubLink = gitHubLink;
         this.projectOne = projectOne;
+        this.projectOneDesc = projectOneDesc;
         this.projectTwo = projectTwo;
+        this.projectTwoDesc = projectTwoDesc;
         this.services = services;
     }
 
@@ -54,6 +61,29 @@ public class Profile {
 
     public String getGitHubLink() {
         return gitHubLink;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+    public String getProjectOneDesc() {
+        return projectOneDesc;
+    }
+
+    public void setProjectOneDesc(String projectOneDesc) {
+        this.projectOneDesc = projectOneDesc;
+    }
+
+    public String getProjectTwoDesc() {
+        return projectTwoDesc;
+    }
+
+    public void setProjectTwoDesc(String projectTwoDesc) {
+        this.projectTwoDesc = projectTwoDesc;
     }
 
     public void setGitHubLink(String gitHubLink) {
