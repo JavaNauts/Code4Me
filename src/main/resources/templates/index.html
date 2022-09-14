@@ -20,13 +20,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/login">Log-In</a>
             </li>
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link disabled"></a>-->
-<!--            </li>-->
+            <li class="nav-item">
+                <a th:href="${'/profile/' + username}" class="nav-link" >View
+                    Profile</a>
+            </li>
         </ul>
     </header>
     <main>
-        <h1 th:if="${username != null}">We got it!</h1>
         <div>
             <p>Site Description</p>
             <br/><br/>
@@ -36,6 +36,7 @@
             </form>
         </div>
         <section>
+            <h1 th:if="${username != null}">We got it!</h1>
             <p>Looking to sell your work?</p>
             <a class="nav-link" href="/signup">Sign up here</a>
         </section>

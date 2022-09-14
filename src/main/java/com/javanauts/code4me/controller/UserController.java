@@ -59,10 +59,10 @@ public class UserController {
     public String getUserProfile(Principal p, Model m,
                                  @PathVariable String username) {
         if (p != null) {
-            AppUser appUser = (AppUser) appUserRepo.findByUsername(username);
-            m.addAttribute("username", username);
+            AppUser appUser = appUserRepo.findByUsername(username);
+            m.addAttribute("appUser", appUser);
         }
-        AppUser dbUser = (AppUser) appUserRepo.findByUsername(username);
+        AppUser dbUser = appUserRepo.findByUsername(username);
         m.addAttribute("dbUserUsername", dbUser.getUsername());
 
         return "profile";
@@ -79,7 +79,7 @@ public class UserController {
     }
     @PostMapping("/login")
     public RedirectView loginUser(String username, String password){
-        AppUser appUserFromDb = (AppUser) appUserRepo.findByUsername(username);
+        AppUser appUserFromDb = appUserRepo.findByUsername(username);
         return new RedirectView("/");
     }
     @PostMapping("profile/{username}")
