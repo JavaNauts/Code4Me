@@ -7,6 +7,10 @@
 *Yari Velazquez*   
 *Stanley Wilder*   
 
+## Team Agreement
+
+[Team Agreement README](https://github.com/mnmason86/401-Midterm-Team-Agreement/blob/main/README.md)
+
 ## Project Vision
 
 Our vision for the **Code4Me** App is to provide a platform where developers can present their skill set for client consideration. Clients can view developers' profiles with past projects, biographies, available services, contact information. Clients can also book and pay for services a developer offers. 
