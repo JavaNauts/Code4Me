@@ -50,11 +50,11 @@ public class UserController {
     public String getLoginPage(){return "login"; }
 
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String password, String email,
-                                   String firstName, String lastName){
+    public RedirectView createUser(String username, String password,
+                                   String firstName, String lastName, String email){
         String hashedPassword = passwordEncoder.encode(password);
-        AppUser newUser = new AppUser(username,hashedPassword, email, firstName,
-                lastName);
+        AppUser newUser = new AppUser(username,hashedPassword,firstName,
+                lastName,email);
         appUserRepo.save(newUser);
         return new RedirectView("/");
     }
