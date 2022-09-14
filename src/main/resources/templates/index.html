@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Code4Me Home</title>
-    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+<!--    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}"-->
+<!--          type="text/css"/>-->
 </head>
 <body>
     <header>
@@ -11,13 +12,13 @@
         <h1>Code4Me</h1>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sign-Up</a>
+                <a class="nav-link" href="/signup">Sign-Up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Log-In</a>
+                <a class="nav-link" href="/login">Log-In</a>
             </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link disabled"></a>-->
@@ -25,7 +26,7 @@
         </ul>
     </header>
     <main>
-        <div th:if="${username != null}">We got it!</div>
+        <h1 th:if="${username != null}">We got it!</h1>
         <div>
             <p>Site Description</p>
             <br/><br/>
@@ -36,10 +37,10 @@
         </div>
         <section>
             <p>Looking to sell your work?</p>
-            <p class="nav-link" href="#">Sign up here</p>
+            <a class="nav-link" href="/signup">Sign up here</a>
         </section>
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+       <img src="./default_profile.png" class="card-img-top" alt="profile img">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -64,12 +65,13 @@
         <i class="bi bi-twitter"></i>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                <a class="nav-link active" aria-current="page" href="/about">About
+                    Us</a>
             </li>
         </ul>
     </footer>
-<script th:src="@{/assets/jquery/jquery.min.js}"></script>
-<script th:src="@{/assets/popper.js/popper.min.js}"></script>
-<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+<!--<script th:src="@{/assets/jquery/jquery.min.js}"></script>-->
+<!--<script th:src="@{/assets/popper.js/popper.min.js}"></script>-->
+<!--<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>-->
 </body>
 </html>

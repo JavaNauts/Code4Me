@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,8 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         return bCryptPasswordEncoder;
     }
     @Override
+<<<<<<< Updated upstream
     protected void configure(final AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+=======
+    protected void configure(final AuthenticationManagerBuilder authManagerBuilder) throws Exception{
+        authManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+>>>>>>> Stashed changes
     }
     @Override
     protected void configure(final HttpSecurity http) throws Exception{
@@ -34,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/signup")
+                .antMatchers("/", "/login", "/signup","/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
