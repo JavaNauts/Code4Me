@@ -21,15 +21,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+
     @Override
-<<<<<<< Updated upstream
+
     protected void configure(final AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-=======
-    protected void configure(final AuthenticationManagerBuilder authManagerBuilder) throws Exception{
-        authManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
->>>>>>> Stashed changes
+
     }
+
     @Override
     protected void configure(final HttpSecurity http) throws Exception{
         http

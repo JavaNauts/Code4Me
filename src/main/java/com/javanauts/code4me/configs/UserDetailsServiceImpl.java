@@ -14,13 +14,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     @Override
-<<<<<<< Updated upstream
+
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        return (UserDetails) appUserRepo.findByUsername(username);
-=======
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return appUserRepo.findByUsername(username);
->>>>>>> Stashed changes
     }
 
 }

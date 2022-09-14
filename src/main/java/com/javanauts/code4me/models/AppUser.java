@@ -1,5 +1,8 @@
 package com.javanauts.code4me.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,10 +10,11 @@ import javax.persistence.Id;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class AppUser {
+public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -48,8 +52,33 @@ public class AppUser {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
@@ -80,7 +109,29 @@ public class AppUser {
         return email;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public List<Receipts> getReceiptList() {
+        return receiptList;
+    }
+
+    public void setReceiptList(List<Receipts> receiptList) {
+        this.receiptList = receiptList;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
