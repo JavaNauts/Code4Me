@@ -7,4 +7,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface ProfileRepo extends JpaRepository<Profile, Long> {
     public Profile findByAppUser(AppUser appUser);
+    public Profile findById(long id);
 }

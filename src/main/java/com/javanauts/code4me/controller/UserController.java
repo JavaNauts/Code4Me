@@ -70,11 +70,9 @@ public class UserController {
         if (p != null) {
             AppUser appUser = appUserRepo.findByUsername(username);
             m.addAttribute("appUser", appUser);
-            System.out.println(username);
         }
         AppUser dbUser = appUserRepo.findByUsername(username);
         m.addAttribute("dbUser", dbUser);
-        System.out.println(dbUser);
 
         return "profile";
     }
@@ -87,11 +85,9 @@ public class UserController {
             AppUser appUser = appUserRepo.findByUsername(username);
             m.addAttribute("appUser", appUser);
             m.addAttribute("formEnabled", formEnabled);
-            System.out.println(username);
         }
         AppUser dbUser = appUserRepo.findByUsername(username);
         m.addAttribute("dbUser", dbUser);
-        System.out.println(dbUser);
         return "edit-profile";
     }
 
@@ -99,8 +95,11 @@ public class UserController {
     public RedirectView createUser(String username, String password,
                                    String firstName, String lastName, String email){
         String hashedPassword = passwordEncoder.encode(password);
+        Profile newProfile = new Profile("Enter bio here","example@github.com", "Give a project link here", "Project Description", "Give a project link here",
+                "Project description");
         AppUser newUser = new AppUser(username,hashedPassword,firstName,
-                lastName,email);
+                lastName,email, newProfile);
+        profileRepo.save(newProfile);
         appUserRepo.save(newUser);
         return new RedirectView("/");
     }
@@ -113,21 +112,13 @@ public class UserController {
     @PostMapping("edit-profile/{username}")
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
-                                     String keyword,
-                                     String description, Float price,
                                      String gitHubLink
             , String projectOne, String projectOneDesc, String projectTwo,
                                      String projectTwoDesc,
                                      RedirectAttributes redir){
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
-            Profile newProfile = profileRepo.findByAppUser(appUser);
-            if(newProfile == null){
-                newProfile = new Profile(bio, gitHubLink, projectOne,
-                        projectOneDesc, projectTwo, projectTwoDesc);
-            }
-            Skill newSkill = new Skill(keyword, newProfile);
-            Service newService = new Service(description,price,newProfile);
+            Profile newProfile = appUser.getProfile();
             newProfile.setBio(bio);
             newProfile.setGitHubLink(gitHubLink);
             newProfile.setProjectOne(projectOne);
@@ -135,11 +126,36 @@ public class UserController {
             newProfile.setProjectTwo(projectTwo);
             newProfile.setProjectTwoDesc(projectTwoDesc);
             profileRepo.save(newProfile);
-            skillRepo.save(newSkill);
-            serviceRepo.save(newService);
         } else {
             redir.addFlashAttribute("errorMessage", "Cannot edit another user's " +
                     "profile");
+        }
+        return new RedirectView("/profile/" + username);
+    }
+
+    @PostMapping("edit-skills/{username}")
+    public RedirectView editSkills(Model m, Principal p,
+                                     @PathVariable String username,
+                                     String keyword, RedirectAttributes redir){
+
+        if(p != null && p.getName().equals(username)){
+            AppUser appUser = appUserRepo.findByUsername(username);
+            Profile newProfile = profileRepo.findByAppUser(appUser);
+            Skill newSkill = new Skill(keyword, newProfile);
+            skillRepo.save(newSkill);
+        }
+        return new RedirectView("/profile/" + username);
+    }
+    @PostMapping("edit-services/{username}")
+    public RedirectView editServices(Model m, Principal p,
+                                   @PathVariable String username,
+                                   String description, Float price, RedirectAttributes redir){
+
+        if(p != null && p.getName().equals(username)){
+            AppUser appUser = appUserRepo.findByUsername(username);
+            Profile newProfile = profileRepo.findByAppUser(appUser);
+            Service newService = new Service(description,price, newProfile);
+           serviceRepo.save(newService);
         }
         return new RedirectView("/profile/" + username);
     }

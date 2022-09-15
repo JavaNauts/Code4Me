@@ -33,7 +33,7 @@
     <h3 th:if="${appUser}" th:text="${appUser.firstName + ' ' + appUser.lastName}"></h3>
     <h4 th:if="${appUser}" th:text="${appUser.username}"></h4>
     <h4 th:if="${appUser}" th:text="${appUser.email}"></h4>
-<!--    <p th:if="${appUser}" th:text="${appUser.profile.bio}"></p>-->
+    <p th:if="${appUser}" th:text="${appUser.profile.bio}"></p>
 <!--    <section>-->
 <!--        <ul th:each="skill: ${appUser.profile.skills}">-->
 <!--            <li th:text="${skill}"></li>-->
