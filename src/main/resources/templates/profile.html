@@ -24,8 +24,7 @@
                     <a class="nav-link" aria-current="page" href="/signup">Sign-Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">Log
-                        -In</a>
+                    <a class="nav-link" aria-current="page" href="/login">Log-In</a>
                 </li>
                 <li class="nav-item">
                     <a th:href="${'/edit-profile/' + username}"
@@ -37,26 +36,72 @@
 </header>
 <main>
     <h2 id="my-profile">My Profile</h2>
-<div id="user-info">
-    <img src="../default_profile.png" alt="profile pic" id="profile-image">
-    <div id="user-info2">
-        <h2 th:if="${appUser}"
-            th:text="${appUser.firstName + ' ' + appUser.lastName}"
-            id="full-name"></h2>
-        <h4 th:if="${appUser}" th:text="${'Username: ' + appUser.username}"></h4>
-        <h4 th:if="${appUser}" th:text="${'Contact Me: ' + appUser.email}"></h4>
-        <p th:if="${appUser}" th:text="${appUser.profile.bio}"></p>
+    <div id="user-info">
+        <img src="../default_profile.png" alt="profile pic" id="profile-image">
+        <div id="user-info2">
+            <h2 th:text="${dbUser.firstName + ' ' + dbUser.lastName}"
+                id="full-name"></h2>
+            <h4 th:text="${'Username: ' + dbUser.username}"></h4>
+            <h4 th:text="${'Contact Me: ' + dbUser.email}"></h4>
+            <p th:text="${dbUser.profile.bio}"></p>
+            <a id="gh-link" href="${dbUser.profile.gitHubLink}">My GitHub Profile</a>
+        </div>
+    </div>
+
+<div class="container-lg">
+    <div id="user-skills" class="container text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+        </svg>
+
+        <div th:each="skill: ${dbUser.profile.skills}"
+             class="alert alert-success d-flex align-items-center row"
+             role="alert"
+             id="skills-div">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                 aria-label="Success:">
+                <use xlink:href="#check-circle-fill"/>
+            </svg>
+
+            <div th:text="${skill.keyword}" id="skill" class="col-6 col-sm-3">
+            </div>
+
+        </div>
     </div>
 </div>
+
+    <div id="project-cards">
+        <div id="project1-card" class="card" style="width: 20rem;">
+            <div id="project-1" class="card-body">
+                <h3 class="card-title">Featured Project</h3>
+                <a class="card-link" href="${dbUser.profile.projectOne}">Link to
+                    Project</a>
+                <p class="card-text" th:text="${dbUser.profile.projectOneDesc}"></p>
+            </div>
+        </div>
+
+        <div id="project2-card" class="card" style="width: 20rem;">
+            <div id="project-2" class="card-body">
+                <h3 class="card-title">Featured Project</h3>
+                <a class="card-link" href="${dbUser.profile.projectTwo}">Link to
+                    Project</a>
+                <p class="card-text" th:text="${dbUser.profile.projectTwoDesc}"></p>
+            </div>
+        </div>
+    </div>
 </main>
 <footer>
     <ul class="nav justify-content-start">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about">About
-                Us</a>
+        <li class="nav-item" >
+            <a id="foot-nav1" class="nav-link active" aria-current="page"
+               href="https://github.com/JavaNauts/Code4Me">About
+                Code4Me</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <li class="nav-item" >
+            <a id="foot-nav2" class="nav-link active" aria-current="page"
+               href="/">Home</a>
         </li>
         <li class="nav-item">
             <a id="copyright" class="nav-link disabled" aria-disabled="true"
