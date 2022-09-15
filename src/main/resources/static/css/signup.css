@@ -1,0 +1,48 @@
+main{
+background-color:#bffbff;
+display:block;
+margin-left:auto;
+margin-right:auto;
+margin-top: 2rem;
+width: 35%;
+border-radius: 1em;
+padding-top:.5rem;
+padding-bottom:2.5rem;
+}
+
+#signup-h1{
+display:block;
+margin:auto;
+margin-top:2rem;
+text-align:center;
+}
+
+.form-label{
+display:block;
+margin:auto;
+margin-top: 1rem;
+text-align:center;
+font-weight:bold;
+font-size: 1.2rem;
+}
+#signup-btn{
+display:block;
+margin:auto;
+margin-top: 1.5rem;
+}
+
+.form-control {
+display:block;
+margin:auto;
+width: 40%;
+}
+
+#signup-logo{
+display:block;
+margin:auto;
+padding-top: 2rem;
+height: 300px;
+width: 265px;
+}
+
+
