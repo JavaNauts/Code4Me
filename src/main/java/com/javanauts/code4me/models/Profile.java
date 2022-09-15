@@ -17,7 +17,7 @@ public class Profile {
     private  String projectTwo;
     private String projectTwoDesc;
 
-    @OneToOne
+    @OneToOne(mappedBy = "profile")
     AppUser appUser;
 
     @OneToMany(mappedBy = "profile")

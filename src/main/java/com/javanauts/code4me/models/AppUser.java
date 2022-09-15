@@ -26,6 +26,7 @@ public class AppUser implements UserDetails {
     private String email;
 
     @OneToOne
+    @JoinColumn(name="profile_id")
     Profile profile;
 
     @OneToMany(mappedBy = "appUser")
@@ -35,12 +36,13 @@ public class AppUser implements UserDetails {
     }
 
     public AppUser(String username, String password, String firstName,
-                   String lastName, String email) {
+                   String lastName, String email, Profile profile) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.profile = profile;
 
     }
 
