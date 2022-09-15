@@ -8,8 +8,8 @@
 
 </head>
 <body>
-<header>
-    <img src="./static/image/Logo.png" class="img-thumbnail" alt="Code4Me logo">
+<header th:fragment="header">
+    <img src="../Logo.png" class="img-thumbnail" alt="Code4Me logo">
     <h1>Code4Me</h1>
     <ul class="nav justify-content-end">
         <li class="nav-item">
@@ -31,9 +31,17 @@
     <div>
         <p>Site Description</p>
         <br/><br/>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+        <form action="/search-skills" th:method="post">
+            <label>What are you looking for?</label>
+            <select class="form-select container-lg" name="keyword" aria-label="Default select example">
+                <option value="WebDevelopment">Web Development</option>
+                <option value="ServerDevelopment">Server Development</option>
+                <option value="Webdesign">Web design</option>
+                <option value="FullStack">Full Stack</option>
+                <option value="ApplicationDevelopment">Application Development</option>
+                <option value="Android/IOS">Android/IOS</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
     <section>

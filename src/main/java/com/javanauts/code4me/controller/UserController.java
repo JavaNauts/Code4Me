@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -136,13 +137,19 @@ public class UserController {
     @PostMapping("edit-skills/{username}")
     public RedirectView editSkills(Model m, Principal p,
                                      @PathVariable String username,
-                                     String keyword, RedirectAttributes redir){
+                                     String WebDevelopment,String ServerDevelopment,String Webdesign, String FullStack,String ApplicationDevelopment,String Mobile){
 
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
-            Profile newProfile = profileRepo.findByAppUser(appUser);
-            Skill newSkill = new Skill(keyword, newProfile);
-            skillRepo.save(newSkill);
+            Profile userProfile = profileRepo.findByAppUser(appUser);
+            List<Skill> skillList = new ArrayList<>();
+            skillList.add(new Skill(WebDevelopment, userProfile));
+            skillList.add(new Skill(ServerDevelopment, userProfile));
+            skillList.add(new Skill(Webdesign, userProfile));
+            skillList.add(new Skill(FullStack, userProfile));
+            skillList.add(new Skill(ApplicationDevelopment, userProfile));
+            skillList.add(new Skill(Mobile, userProfile));
+            skillRepo.saveAll(skillList);
         }
         return new RedirectView("/profile/" + username);
     }
