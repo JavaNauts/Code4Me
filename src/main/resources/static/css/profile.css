@@ -1,0 +1,41 @@
+#header-logo{
+display:block;
+margin-auto;
+}
+
+#profile-image{
+border-radius:1em;
+height:300;
+}
+
+#my-profile{
+display:block;
+text-align:center;
+width: 20rem;
+margin:2rem auto;
+
+}
+
+h4{
+margin-top: 1rem;
+}
+
+#full-name{
+font-weight:bold;
+}
+#user-info{
+margin-bottom:5rem;
+display:flex;
+justify-content: start;
+background-color: #203F59;
+padding:2rem;
+padding-left: 4rem;
+color:#f2f2f2;
+}
+
+#user-info2{
+margin-left: 2rem;
+}
+
+
+
