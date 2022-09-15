@@ -24,8 +24,7 @@
                     <a class="nav-link" aria-current="page" href="/signup">Sign-Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">Log
-                        -In</a>
+                    <a class="nav-link" aria-current="page" href="/login">Log-In</a>
                 </li>
                 <li class="nav-item">
                     <a th:href="${'/edit-profile/' + username}"
@@ -37,17 +36,36 @@
 </header>
 <main>
     <h2 id="my-profile">My Profile</h2>
-<div id="user-info">
-    <img src="../default_profile.png" alt="profile pic" id="profile-image">
-    <div id="user-info2">
-        <h2 th:if="${appUser}"
-            th:text="${appUser.firstName + ' ' + appUser.lastName}"
-            id="full-name"></h2>
-        <h4 th:if="${appUser}" th:text="${'Username: ' + appUser.username}"></h4>
-        <h4 th:if="${appUser}" th:text="${'Contact Me: ' + appUser.email}"></h4>
-        <p th:if="${appUser}" th:text="${appUser.profile.bio}"></p>
+    <div id="user-info">
+        <img src="../default_profile.png" alt="profile pic" id="profile-image">
+        <div id="user-info2">
+            <h2 th:text="${dbUser.firstName + ' ' + dbUser.lastName}"
+                id="full-name"></h2>
+            <h4 th:text="${'Username: ' + dbUser.username}"></h4>
+            <h4 th:text="${'Contact Me: ' + dbUser.email}"></h4>
+            <p th:text="${dbUser.profile.bio}"></p>
+            <a id="gh-link" href="${dbUser.profile.gitHubLink}">My GitHub Profile</a>
+        </div>
     </div>
-</div>
+    <div id="project-cards">
+        <div id="project1-card" class="card" style="width: 20rem;">
+            <div id="project-1" class="card-body">
+                <h3 class="card-title">Featured Project</h3>
+                <a class="card-link" href="${dbUser.profile.projectOne}">Link to
+                    Project</a>
+                <p class="card-text" th:text="${dbUser.profile.projectOneDesc}"></p>
+            </div>
+        </div>
+
+        <div id="project2-card" class="card" style="width: 20rem;">
+            <div id="project-2" class="card-body">
+                <h3 class="card-title">Featured Project</h3>
+                <a class="card-link" href="${dbUser.profile.projectTwo}">Link to
+                    Project</a>
+                <p class="card-text" th:text="${dbUser.profile.projectTwoDesc}"></p>
+            </div>
+        </div>
+    </div>
 </main>
 <footer>
     <ul class="nav justify-content-start">

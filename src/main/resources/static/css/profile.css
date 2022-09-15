@@ -37,5 +37,17 @@ color:#f2f2f2;
 margin-left: 2rem;
 }
 
+#project-cards{
+display:flex;
+justify-content:space-around;
+}
+
+.card-body{
+background-color:#ffc30080;
+}
+
+.card-text{
+margin-top:1rem;
+}
 
 
