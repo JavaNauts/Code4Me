@@ -8,23 +8,7 @@
 
 </head>
 <body>
-<header>
-    <img src="./static/image/Logo.png" class="img-thumbnail" alt="Code4Me logo">
-    <h1>Code4Me</h1>
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/signup">Sign-Up</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/login">Log-In</a>
-        </li>
-        <!--            <li class="nav-item">-->
-        <!--                <a class="nav-link disabled"></a>-->
-        <!--            </li>-->
-    </ul>
+<header th:replace="/fragments/nav-header">
 </header>
 <main>
     <form th:action="${'/edit-profile/' + username}" th:method="put">

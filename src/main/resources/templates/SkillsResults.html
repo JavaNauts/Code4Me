@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,10 +11,11 @@
 <div class="container-lg">
 <container class="d-inline-flex p-2 " th:each="skill: ${skills}">
     <div class="card" style="width: 18rem;">
-        <img src="../Coding_pic.jpg" class="card-img-top" alt="...">
+        <img th:src="../Coding_pic.jpg" class="card-img-top" alt="..." >
         <div class="card-body">
             <h5 th:text="${skill.keyword}" class="card-title">Card title</h5>
-            <p th:text="${skill.profile.getAppUser().getUsername()}" class="card-text"/>
+            <p th:text="${skill.profile.getAppUser().getUsername()}"
+               class="card-text"></p>
             <a th:href="@{'/profile/' + ${skill.profile.getAppUser().getUsername()}}" class="btn btn-primary mx-auto">Visit Profile</a>
         </div>
     </div>
