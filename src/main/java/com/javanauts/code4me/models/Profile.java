@@ -2,6 +2,7 @@ package com.javanauts.code4me.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Profile {
@@ -10,25 +11,34 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String bio;
-    private ArrayList<String> skills;
-    private ArrayList<String> services;
     private String gitHubLink;
     private String projectOne;
+    private String projectOneDesc;
     private  String projectTwo;
+    private String projectTwoDesc;
 
     @OneToOne
     AppUser appUser;
+
+    @OneToMany(mappedBy = "profile")
+    public List<Service> services;
+
+    @OneToMany(mappedBy = "profile")
+    public List<Skill> skills;
+
     protected Profile() {
     }
 
-    public Profile(String bio, ArrayList<String> skills, String gitHubLink, String projectOne, String projectTwo, ArrayList<String> services) {
+    public Profile(String bio, String gitHubLink,
+                   String projectOne, String projectOneDesc, String projectTwo,
+                   String projectTwoDesc) {
 
         this.bio = bio;
-        this.skills = skills;
         this.gitHubLink = gitHubLink;
         this.projectOne = projectOne;
+        this.projectOneDesc = projectOneDesc;
         this.projectTwo = projectTwo;
-        this.services = services;
+        this.projectTwoDesc = projectTwoDesc;
     }
 
     public Long getId() {
@@ -44,16 +54,39 @@ public class Profile {
         this.bio = bio;
     }
 
-    public ArrayList<String> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
     public String getGitHubLink() {
         return gitHubLink;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+    public String getProjectOneDesc() {
+        return projectOneDesc;
+    }
+
+    public void setProjectOneDesc(String projectOneDesc) {
+        this.projectOneDesc = projectOneDesc;
+    }
+
+    public String getProjectTwoDesc() {
+        return projectTwoDesc;
+    }
+
+    public void setProjectTwoDesc(String projectTwoDesc) {
+        this.projectTwoDesc = projectTwoDesc;
     }
 
     public void setGitHubLink(String gitHubLink) {
@@ -76,11 +109,11 @@ public class Profile {
         this.projectTwo = projectTwo;
     }
 
-    public ArrayList<String> getServices() {
+    public List<Service> getServices() {
         return services;
     }
 
-    public void setServices(ArrayList<String> services) {
+    public void setServices(List<Service> services) {
         this.services = services;
     }
 }
