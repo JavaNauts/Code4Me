@@ -69,23 +69,7 @@
         </div>
     </div>
 </main>
-<footer>
-    <ul class="nav justify-content-start">
-        <li class="nav-item" >
-            <a id="foot-nav1" class="nav-link active" aria-current="page"
-               href="https://github.com/JavaNauts/Code4Me">About
-                Code4Me</a>
-        </li>
-        <li class="nav-item" >
-            <a id="foot-nav2" class="nav-link active" aria-current="page"
-               href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a id="copyright" class="nav-link disabled" aria-disabled="true"
-               href="#">© Copyright
-                JavaNauts 2022</a>
-        </li>
-    </ul>
+<footer th:replace="/fragments/footer">
 </footer>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
