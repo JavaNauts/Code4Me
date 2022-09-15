@@ -21,10 +21,14 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/signup">Sign-Up</a>
+                    <a class="nav-link" aria-current="page" href="/signup">Sign
+                        Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">Log-In</a>
+                    <a th:if="${appUser}" class="nav-link" aria-current="page"
+                       href="/logout">Log Out</a>
+                    <a th:if="!${appUser}" class="nav-link" aria-current="page"
+                       href="/login">Log In</a>
                 </li>
                 <li class="nav-item">
                     <a th:href="${'/edit-profile/' + username}"
