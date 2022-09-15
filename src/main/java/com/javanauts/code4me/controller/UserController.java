@@ -85,7 +85,7 @@ public class UserController {
             formEnabled = true;
             AppUser appUser = appUserRepo.findByUsername(username);
             m.addAttribute("appUser", appUser);
-            m.addAttribute("formEnabled", formEnabled);
+            m.addAttribute("formEnabled", true);
         }
         AppUser dbUser = appUserRepo.findByUsername(username);
         m.addAttribute("dbUser", dbUser);
