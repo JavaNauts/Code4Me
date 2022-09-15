@@ -1,6 +1,6 @@
 #header-logo{
 display:block;
-margin-auto;
+margin:auto;
 }
 
 #profile-image{
@@ -50,4 +50,19 @@ background-color:#ffc30080;
 margin-top:1rem;
 }
 
+#user-skills{
+display:flex;
+justify-content:space-around;
+}
+
+#skill{
+width: 8rem;
+display:inline;
+margin-left:.5rem;
+margin-right:.5rem;
+}
+
+.container-lg{
+height: 30rem;
+}
 
