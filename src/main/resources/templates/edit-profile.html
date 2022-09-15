@@ -39,17 +39,29 @@
         <input th:value="${dbUserProjectOne}" type="text" name="projectOne"
                th:disabled="${!formEnabled}"><br/>
 
+
         <label>Description</label>
         <input th:value="${dbUserProjectOneDesc}" type="text" name="projectOneDesc"
                th:disabled="${!formEnabled}"><br/>
+
+    <label>Link to Featured Project</label>
+    <input th:value="${dbUserProjectOne}" type="text" name="projectOne"
+           th:disabled="${!formEnabled}"><br/>
+
 
         <label>Featured Project</label>
         <input th:value="${dbUserProjectTwo}" type="text" name="projectTwo"
                th:disabled="${!formEnabled}"><br/>
 
+
         <label>Description</label>
         <input th:value="${dbUserProjectTwoDesc}" type="text" name="projectTwoDesc"
                th:disabled="${!formEnabled}"><br/>
+
+    <label>Link to Featured Project</label>
+    <input th:value="${dbUserProjectTwo}" type="text" name="projectTwo"
+           th:disabled="${!formEnabled}"><br/>
+
 
         <input th:if="${formEnabled}" type="submit"
                value="Edit Your Profile">
