@@ -1,6 +1,6 @@
 #header-logo{
 display:block;
-margin-auto;
+margin:auto;
 }
 
 #profile-image{
@@ -27,7 +27,7 @@ font-weight:bold;
 margin-bottom:5rem;
 display:flex;
 justify-content: start;
-background-color: #203F59;
+background-color: #003566;
 padding:2rem;
 padding-left: 4rem;
 color:#f2f2f2;
@@ -37,5 +37,32 @@ color:#f2f2f2;
 margin-left: 2rem;
 }
 
+#project-cards{
+display:flex;
+justify-content:space-around;
+}
 
+.card-body{
+background-color:#ffc30080;
+}
+
+.card-text{
+margin-top:1rem;
+}
+
+#user-skills{
+display:flex;
+justify-content:space-around;
+}
+
+#skill{
+width: 8rem;
+display:inline;
+margin-left:.5rem;
+margin-right:.5rem;
+}
+
+.container-lg{
+height: 30rem;
+}
 

@@ -5,7 +5,7 @@
   <title>Nav Header</title>
 </head>
 <body>
-<h3 th:if="${username}"
+<h3  th:if="${username}"
     th:text="'Current User: ' + ${username}"></h3>
 <nav th:if="${username}" th:fragment="site-user"
      th:text="'Current User: ' + ${username}"></nav>
