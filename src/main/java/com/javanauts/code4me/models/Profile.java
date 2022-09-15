@@ -29,19 +29,16 @@ public class Profile {
     protected Profile() {
     }
 
-    public Profile(String bio, List<Skill> skills, String gitHubLink,
+    public Profile(String bio, String gitHubLink,
                    String projectOne, String projectOneDesc, String projectTwo,
-                   String projectTwoDesc,
-                   List<Service> services) {
+                   String projectTwoDesc) {
 
         this.bio = bio;
-        this.skills = skills;
         this.gitHubLink = gitHubLink;
         this.projectOne = projectOne;
         this.projectOneDesc = projectOneDesc;
         this.projectTwo = projectTwo;
         this.projectTwoDesc = projectTwoDesc;
-        this.services = services;
     }
 
     public Long getId() {

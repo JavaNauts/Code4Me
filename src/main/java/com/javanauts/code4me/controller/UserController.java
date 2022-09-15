@@ -6,6 +6,8 @@ import com.javanauts.code4me.models.Service;
 import com.javanauts.code4me.models.Skill;
 import com.javanauts.code4me.repository.AppUserRepo;
 import com.javanauts.code4me.repository.ProfileRepo;
+import com.javanauts.code4me.repository.ServiceRepo;
+import com.javanauts.code4me.repository.SkillRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,6 +27,13 @@ public class UserController {
     AppUserRepo appUserRepo;
     @Autowired
     ProfileRepo profileRepo;
+
+    @Autowired
+    SkillRepo skillRepo;
+
+    @Autowired
+    ServiceRepo serviceRepo;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -61,11 +67,29 @@ public class UserController {
         if (p != null) {
             AppUser appUser = appUserRepo.findByUsername(username);
             m.addAttribute("appUser", appUser);
+            System.out.println(username);
         }
         AppUser dbUser = appUserRepo.findByUsername(username);
-        m.addAttribute("dbUserUsername", dbUser.getUsername());
+        m.addAttribute("dbUser", dbUser);
+        System.out.println(dbUser);
 
         return "profile";
+    }
+
+    @GetMapping("/edit-profile/{username}")
+    public String getEditPage(Principal p, Model m, @PathVariable String username){
+        boolean formEnabled = false;
+        if (p != null) {
+            formEnabled = true;
+            AppUser appUser = appUserRepo.findByUsername(username);
+            m.addAttribute("appUser", appUser);
+            m.addAttribute("formEnabled", formEnabled);
+            System.out.println(username);
+        }
+        AppUser dbUser = appUserRepo.findByUsername(username);
+        m.addAttribute("dbUser", dbUser);
+        System.out.println(dbUser);
+        return "edit-profile";
     }
 
     @PostMapping("/signup")
@@ -82,26 +106,33 @@ public class UserController {
         AppUser appUserFromDb = appUserRepo.findByUsername(username);
         return new RedirectView("/");
     }
-    @PostMapping("profile/{username}")
+    @PostMapping("edit-profile/{username}")
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
-                                     List<Skill> skills,
-                                     List<Service> services, String gitHubLink
+                                     String keyword,
+                                     String description, Float price,
+                                     String gitHubLink
             , String projectOne, String projectOneDesc, String projectTwo,
                                      String projectTwoDesc,
                                      RedirectAttributes redir){
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
-            Profile newProfile = appUser.getProfile();
+            Profile newProfile = profileRepo.findByAppUser(appUser);
+            if(newProfile == null){
+                newProfile = new Profile(bio, gitHubLink, projectOne,
+                        projectOneDesc, projectTwo, projectTwoDesc);
+            }
+            Skill newSkill = new Skill(keyword, newProfile);
+            Service newService = new Service(description,price,newProfile);
             newProfile.setBio(bio);
-            newProfile.setSkills(skills);
-            newProfile.setServices(services);
             newProfile.setGitHubLink(gitHubLink);
             newProfile.setProjectOne(projectOne);
             newProfile.setProjectOneDesc(projectOneDesc);
             newProfile.setProjectTwo(projectTwo);
             newProfile.setProjectTwoDesc(projectTwoDesc);
             profileRepo.save(newProfile);
+            skillRepo.save(newSkill);
+            serviceRepo.save(newService);
         } else {
             redir.addFlashAttribute("errorMessage", "Cannot edit another user's " +
                     "profile");

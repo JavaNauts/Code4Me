@@ -18,9 +18,10 @@ public class Service {
     protected Service(){
     }
 
-    public Service(String description, Float price){
+    public Service(String description, Float price, Profile profile){
         this.description = description;
         this.price = price;
+        this.profile = profile;
     }
 
     public Long getId() {

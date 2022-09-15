@@ -17,8 +17,10 @@ public class Skill {
     protected Skill(){
     }
 
-    public Skill(String keyword){
+    public Skill(String keyword, Profile profile){
+
         this.keyword = keyword;
+        this.profile = profile;
     }
 
     public Long getId() {
