@@ -120,8 +120,8 @@ public class UserController {
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
                                      String gitHubLink
-            , String projectOne, String projectOneDesc, String projectTwo,
-                                     String projectTwoDesc,
+            , String projectOne, String projectOneDesc,String projectOneLink, String projectTwo,
+                                     String projectTwoDesc, String projectTwoLink,
                                      RedirectAttributes redir){
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
@@ -130,14 +130,16 @@ public class UserController {
             newProfile.setGitHubLink(gitHubLink);
             newProfile.setProjectOne(projectOne);
             newProfile.setProjectOneDesc(projectOneDesc);
+            newProfile.setProjectOneLink(projectOneLink);
             newProfile.setProjectTwo(projectTwo);
             newProfile.setProjectTwoDesc(projectTwoDesc);
+            newProfile.setProjectTwoLink(projectTwoLink);
             profileRepo.save(newProfile);
         } else {
             redir.addFlashAttribute("errorMessage", "Cannot edit another user's " +
                     "profile");
         }
-        return new RedirectView("/profile/" + username);
+        return new RedirectView("/edit-profile/" + username);
     }
 
     @PostMapping("edit-skills/{username}")
@@ -157,7 +159,7 @@ public class UserController {
             skillList.add(new Skill(Mobile, userProfile));
             skillRepo.saveAll(skillList);
         }
-        return new RedirectView("/profile/" + username);
+        return new RedirectView("/edit-profile/" + username);
     }
     @PostMapping("edit-services/{username}")
     public RedirectView editServices(Model m, Principal p,
@@ -170,7 +172,7 @@ public class UserController {
             Service newService = new Service(description,title,price, newProfile);
            serviceRepo.save(newService);
         }
-        return new RedirectView("/profile/" + username);
+        return new RedirectView("/edit-profile/" + username);
     }
 
 }
