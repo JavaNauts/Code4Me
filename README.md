@@ -33,7 +33,8 @@ Our vision for the **Code4Me** App is to provide a platform where developers can
 
 ### Out
 - Our app will never guarantee that any developer will receive work.
-- Our app will not guarantee that work will be completed by a developer. The responsibility falls to the client and developer do decide upon their terms of agreement.
+- Our app will not guarantee that work will be completed by a developer. 
+The responsibility falls to the client and developer do decide upon their terms of agreement.
 
 ### Minimum Viable Product
 - Storefront-style front-end which utilizes Thymeleaf and Bootstrap
@@ -60,4 +61,5 @@ The app handles username and password for the client, utilizing authentication f
 All links are functional and route to pages appropriately. Payment system allows user sign-in to the payment API. Developers are notified when services are purchased and recieve payment. Clients are notified of payment receipt, and services.
 
 #### Issues
-- *Upon REACT initializtion, getting message "We found potential security vulnerabilities in your dependencies."*
+- *Unable to deploy via Heroku* 9-12-22
+- *React frontend will take more time than we have to complete the project, switching to Thymeleaf* 9-12-22
