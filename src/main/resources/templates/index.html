@@ -16,6 +16,7 @@
         <p class="about">A Site For Devs By Devs</p>
         <p>Are you a developer? Sign up and add your projects, skills and services. Get hired today!!</p>
         <br/><br/>
+<<<<<<< HEAD
         <form action="/search-skills" th:method="post">
             <label>What are you looking for?</label>
             <select class="form-select container-lg" name="keyword" aria-label="Default select example">
@@ -27,6 +28,20 @@
                 <option value="Android/IOS">Android/IOS</option>
             </select>
             <button type="submit" id="button" class="btn btn-primary">Search</button>
+=======
+        <form class="container-lg" action="/search-skills" th:method="post" >
+            <div class="input-group  mb-3">
+                <select class="form-select " name="keyword" aria-label="Default select example">
+                    <option value="Web_Development">Web Development</option>
+                    <option value="Server_Development">Server Development</option>
+                    <option value="Web_design">Web design</option>
+                    <option value="Full_Stack">Full Stack</option>
+                    <option value="Application_Development">Application Development</option>
+                    <option value="Mobile">Android/IOS</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+>>>>>>> eeabfbae3a0dc6e841f39f9705cd5060ed9c0e8c
         </form>
     </div>
 
