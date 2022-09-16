@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/all.css">
 </head>
 <body>
+
 <!--Dev Info-->
 <header th:replace="/fragments/nav-header">
 </header>
@@ -22,7 +23,9 @@
             <h4 th:text="${'Username: ' + dbUser.username}"></h4>
             <h4 th:text="${'Contact Me: ' + dbUser.email}"></h4>
             <p th:text="${dbUser.profile.bio}"></p>
-            <a id="gh-link" href="${dbUser.profile.gitHubLink}">My GitHub Profile</a>
+            <a id="gh-link" th:href="@{${dbUser.profile.gitHubLink}}">My GitHub
+                Profile</a>
+
         </div>
             <a th:href="${'/edit-profile/' + username}"
                class="btn btn-secondary" id="edit-button">Edit Profile</a>
@@ -46,8 +49,7 @@
                      aria-label="Success:">
                     <use xlink:href="#check-circle-fill"/>
                 </svg>
-                <div th:text="${skill.keyword}" id="skill" class="col-6 col-sm-3"
-                     style="text-align:center">
+                <div th:text="${skill.keyword}" id="skill" class="col-6 col-sm-3">
                 </div>
 
             </div>
@@ -91,7 +93,7 @@
         <div id="project1-card" class="card" style="width: 20rem;">
             <div id="project-1" class="card-body">
                 <h3 class="card-title" th:text="${dbUser.profile.projectOne}"></h3>
-                <a class="card-link" th:href="@{'dbUser.profile.projectOneLink'}"
+                <a class="card-link" th:href="@{${dbUser.profile.projectOneLink}}"
                    th:text="${dbUser.profile.projectOneLink}"></a>
                 <p class="card-text" th:text="${dbUser.profile.projectOneDesc}"></p>
             </div>
@@ -100,7 +102,8 @@
         <div id="project2-card" class="card" style="width: 20rem;">
             <div id="project-2" class="card-body">
                 <h3 class="card-title" th:text="${dbUser.profile.projectTwo}"></h3>
-                <a class="card-link" th:href="@{'dbUser.profile.projectTwoLink'}"></a>
+                <a class="card-link" th:href="@{${dbUser.profile.projectTwoLink}}"
+                   th:text="${dbUser.profile.projectOneLink}"></a>
                 <p class="card-text" th:text="${dbUser.profile.projectTwoDesc}"></p>
             </div>
         </div>

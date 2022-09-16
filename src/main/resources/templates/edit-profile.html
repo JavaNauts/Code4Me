@@ -6,108 +6,156 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/editProfile.css">
 </head>
 <body>
 <header th:replace="/fragments/nav-header">
 </header>
 <main>
-    <container class="container-lg mx-auto">
-    <form th:action="${'/edit-profile/' + username}" th:method="put">
-        <label>Bio</label>
-        <input th:value="${dbUserBio}" type="text" name="bio"
-               th:disabled="${!formEnabled}"><br/>
-        <label>Git Hub Link</label>
-        <input th:value="${dbUserGHLink}" type="text" name="gitHubLink"
-               th:disabled="${!formEnabled}"><br/>
+    <div id="main-form" class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                                                                                             width="150px"
+                                                                                             src="../default_profile.png"><span
+                        class="font-weight-bold" th:text="${dbUser.firstName}"></span><span
+                        class="font-weight-bold" th:text="${dbUser.lastName}"></span><span
+                        class="text-black-50" th:text="${dbUser.email}"></span><span> </span></div>
+            </div>
 
-        <label>Featured Project</label>
-        <input th:value="${dbUserProjectOne}" type="text" name="projectOne"
-               th:disabled="${!formEnabled}"><br/>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <form th:action="${'/edit-profile/' + username}" th:method="put">
+                        <div class="mb-3">
 
-
-        <label>Description</label>
-        <input th:value="${dbUserProjectOneDesc}" type="text" name="projectOneDesc"
-               th:disabled="${!formEnabled}"><br/>
-
-    <label>Link to Featured Project</label>
-    <input th:value="${dbUserProjectOneLink}" type="text" name="projectOneLink"
-           th:disabled="${!formEnabled}"><br/>
-
-
-        <label>Featured Project</label>
-        <input th:value="${dbUserProjectTwo}" type="text" name="projectTwo"
-               th:disabled="${!formEnabled}"><br/>
-
-
-        <label>Description</label>
-        <input th:value="${dbUserProjectTwoDesc}" type="text" name="projectTwoDesc"
-               th:disabled="${!formEnabled}"><br/>
-
-    <label>Link to Featured Project</label>
-    <input th:value="${dbUserProjectTwoLink}" type="text" name="projectTwoLink"
-           th:disabled="${!formEnabled}"><br/>
-
-
-        <input th:if="${formEnabled}" type="submit"
-               value="Edit Your Profile">
-
-    </form>
-    <br/>
-    <!--  Services Form-->
-    <form th:action="${'/edit-services/' + username}" th:method="put">
-        <label>What you sellin?</label><br/>
-        <input  type="text" name="title"><br/>
-        <label>description</label><br/>
-        <input  type="text" name="description"><br/>
-        <label>price</label><br/>
-        <input  type="text" name="price">
-        <button type="submit">Submit services</button>
-    </form>
-    <!--  Skills Form-->
-    <form th:action="${'/edit-skills/' + username}" th:method="put">
-        <div class="form-check">
-            <input class="form-check-input" name="WebDevelopment" type="checkbox"  value="Web_Development" id="WebDevelopment">
-            <label class="form-check-label" for="WebDevelopment">
-                Web Development
-            </label>
+                            <label for="bio" class="form-label">Bio</label>
+                            <textarea name="bio" th:value="${dbUserBio}" class="form-control" id="bio"
+                                      rows="4"></textarea>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Github Link</label><input type="text"
+                                                                                                   class="form-control"
+                                                                                                   name="gitHubLink"
+                                                                                                   placeholder="Link to Github Profile"
+                                                                                                   th:value="${dbUserGHLink}">
+                            </div>
+                            <div class="col-md-12"><label class="labels">Featured Project 1</label><input type="text"
+                                                                                                          class="form-control"
+                                                                                                          name="projectOne"
+                                                                                                          placeholder="Title"
+                                                                                                          th:value="${dbUserProjectOne}">
+                            </div>
+                            <br>
+                            <div class="col-md-12"><label class="Description">Project Description</label>
+                                <textarea name="projectOneDesc" placeholder="Description"
+                                          th:value="${dbUserProjectOneDesc}" class="form-control" id="projectOneDesc"
+                                          rows="4"></textarea></div>
+                            <div class="col-md-12 mb-2"><label class="labels">Link to Project</label><input type="text"
+                                                                                                            class="form-control"
+                                                                                                            name="projectOneLink"
+                                                                                                            placeholder="Link to Project"
+                                                                                                            th:value="${dbUserProjectOneLink}">
+                            </div>
+                            <div class="col-md-12"><label class="labels">Featured Project 2</label><input type="text"
+                                                                                                          class="form-control"
+                                                                                                          name="projectTwo"
+                                                                                                          placeholder="Title"
+                                                                                                          th:value="${dbUserProjectTwo}">
+                            </div>
+                            <div class="col-md-12"><label class="Description">Project Description</label><textarea
+                                    name="projectTwoDesc" placeholder="Description" th:value="${dbUserProjectTwoDesc}"
+                                    class="form-control" id="projectTwoDesc" rows="4"></textarea></div>
+                            <br>
+                            <div class="col-md-12"><label class="labels">Link to Project</label><input type="text"
+                                                                                                       class="form-control"
+                                                                                                       name="projectTwoLink"
+                                                                                                       placeholder="Link to Project"
+                                                                                                       th:value="${dbUserProjectTwoLink}">
+                            </div>
+                            <br>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div>
+                        <h4 class="text-right">Add a Service</h4>
+                        <form th:action="${'/edit-services/' + username}" th:method="put">
+                            <label>Service title</label><br/>
+                            <textarea name="title" class="form-control" id="title" rows="1"></textarea>
+                            <label>Description</label><br/>
+                            <textarea name="description" class="form-control" id="description" rows="4"></textarea>
+                            <label>Price</label><br/>
+                            <textarea name="price" class="form-control" id="price" rows="1"></textarea>
+                            <div class="text-center mt-2">
+                                <button class="btn btn-primary profile-button" type="submit">Save Service</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mt-5">
+                        <form th:action="${'/edit-skills/' + username}" th:method="put">
+                            <h4 class="text-right">Skills</h4>
+                            <div class="form-check text-left">
+                                <input class="form-check-input" name="WebDevelopment" type="checkbox"
+                                       value="Web_Development"
+                                       id="WebDevelopment">
+                                <label class="form-check-label" for="WebDevelopment">
+                                    Web Development
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="ServerDevelopment" type="checkbox"
+                                       value="Server_Development"
+                                       id="ServerDevelopment">
+                                <label class="form-check-label" for="ServerDevelopment">
+                                    Server Development
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="Webdesign" type="checkbox" value="Web_design"
+                                       id="Webdesign">
+                                <label class="form-check-label" for="Webdesign">
+                                    Web design
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="FullStack" type="checkbox" value="Full_Stack"
+                                       id="FullStack">
+                                <label class="form-check-label" for="FullStack">
+                                    Full Stack
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="ApplicationDevelopment" type="checkbox"
+                                       value="Application_Development"
+                                       id="ApplicationDevelopment">
+                                <label class="form-check-label" for="ApplicationDevelopment">
+                                    Application Development
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="Mobile" type="checkbox" value="Mobile"
+                                       id="Mobile">
+                                <label class="form-check-label" for="Mobile">
+                                    Mobile Development
+                                </label>
+                            </div>
+                            <div class="mt-5 ms-4">
+                                <button class="btn btn-primary profile-button" type="submit">Save Skills</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" name="ServerDevelopment" type="checkbox" value="Server_Development" id="ServerDevelopment">
-            <label class="form-check-label" for="ServerDevelopment">
-                Server Development
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="Webdesign" type="checkbox" value="Web_design" id="Webdesign">
-            <label class="form-check-label" for="Webdesign">
-                Web design
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="FullStack" type="checkbox" value="Full_Stack" id="FullStack">
-            <label class="form-check-label" for="FullStack">
-                Full Stack
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="ApplicationDevelopment" type="checkbox" value="Application_Development"
-                   id="ApplicationDevelopment">
-            <label class="form-check-label" for="ApplicationDevelopment">
-                Application Development
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="Mobile" type="checkbox" value="Mobile"
-                   id="Mobile">
-            <label class="form-check-label" for="Mobile">
-                Application Development
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
-    </container>
-
+    </div>
 </main>
 <footer th:replace="/fragments/footer">
 </footer>

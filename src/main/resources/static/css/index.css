@@ -1,0 +1,51 @@
+#splash{
+    background-color:#001d3d;
+    display:block;
+    width: 100%;
+    color: #ffd60a;
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    height: 450px;
+    margin-top: 100px;
+    padding-top: 60px;
+    padding-bottom: 200px;
+}
+.nav{
+    position: relative;
+    top:0;
+    left: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    float: left;
+}
+body{
+    background: #ffd60a;
+    height:100vh;
+}
+p{
+    text-align: center;
+}
+#button{
+    display: block;
+    margin: auto;
+}
+form{
+    width: 30%;
+    display: block;
+    margin: auto;
+}
+label{
+    display: block;
+    text-align: center;
+    line-height: 150%;
+}
+.about{
+    text-align: center;
+    font-size: 50px;
+    color: #fafbfc;
+}
+main{
+margin-bottom:100px;
+}
