@@ -14,8 +14,10 @@ public class Profile {
     private String gitHubLink;
     private String projectOne;
     private String projectOneDesc;
+    private String projectOneLink;
     private  String projectTwo;
     private String projectTwoDesc;
+    private String projectTwoLink;
 
     @OneToOne(mappedBy = "profile")
     AppUser appUser;
@@ -30,15 +32,17 @@ public class Profile {
     }
 
     public Profile(String bio, String gitHubLink,
-                   String projectOne, String projectOneDesc, String projectTwo,
-                   String projectTwoDesc) {
+                   String projectOne, String projectOneDesc,String projectOneLink, String projectTwo,
+                   String projectTwoDesc,String projectTwoLink) {
 
         this.bio = bio;
         this.gitHubLink = gitHubLink;
         this.projectOne = projectOne;
         this.projectOneDesc = projectOneDesc;
+        this.projectOneLink = projectOneLink;
         this.projectTwo = projectTwo;
         this.projectTwoDesc = projectTwoDesc;
+        this.projectTwoLink = projectTwoLink;
     }
 
     public Long getId() {
@@ -115,5 +119,21 @@ public class Profile {
 
     public void setServices(List<Service> services) {
         this.services = services;
+    }
+
+    public String getProjectOneLink() {
+        return projectOneLink;
+    }
+
+    public void setProjectOneLink(String projectOneLink) {
+        this.projectOneLink = projectOneLink;
+    }
+
+    public String getProjectTwoLink() {
+        return projectTwoLink;
+    }
+
+    public void setProjectTwoLink(String projectTwoLink) {
+        this.projectTwoLink = projectTwoLink;
     }
 }

@@ -10,7 +10,8 @@ public class Service {
     private Long id;
 
     private String description;
-    private Float price;
+    private String title;
+    private int price;
 
     @ManyToOne
     private Profile profile;
@@ -18,7 +19,8 @@ public class Service {
     protected Service(){
     }
 
-    public Service(String description, Float price, Profile profile){
+    public Service(String description,String title, int price, Profile profile){
+        this.title = title;
         this.description = description;
         this.price = price;
         this.profile = profile;
@@ -37,11 +39,11 @@ public class Service {
         this.description = description;
     }
 
-    public Float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -51,5 +53,13 @@ public class Service {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
