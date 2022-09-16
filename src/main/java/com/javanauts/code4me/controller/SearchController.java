@@ -21,7 +21,6 @@ public class SearchController {
 
     @PostMapping("/search-skills")
     public RedirectView searchSkills(String keyword) {
-        System.out.println(keyword);
         return new RedirectView("/Skills-Results/" + keyword);
     }
 

@@ -14,17 +14,18 @@
     <div>
         <p>Site Description</p>
         <br/><br/>
-        <form action="/search-skills" th:method="post">
-            <label>What are you looking for?</label>
-            <select class="form-select container-lg" name="keyword" aria-label="Default select example">
-                <option value="WebDevelopment">Web Development</option>
-                <option value="ServerDevelopment">Server Development</option>
-                <option value="Webdesign">Web design</option>
-                <option value="FullStack">Full Stack</option>
-                <option value="ApplicationDevelopment">Application Development</option>
-                <option value="Android/IOS">Android/IOS</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Search</button>
+        <form class="container-lg" action="/search-skills" th:method="post" >
+            <div class="input-group  mb-3">
+                <select class="form-select " name="keyword" aria-label="Default select example">
+                    <option value="Web_Development">Web Development</option>
+                    <option value="Server_Development">Server Development</option>
+                    <option value="Web_design">Web design</option>
+                    <option value="Full_Stack">Full Stack</option>
+                    <option value="Application_Development">Application Development</option>
+                    <option value="Mobile">Android/IOS</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
         </form>
     </div>
     <section>
