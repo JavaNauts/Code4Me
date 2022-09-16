@@ -27,6 +27,7 @@
     </ul>
 </header>
 <main>
+    <container class="container-lg mx-auto">
     <form th:action="${'/edit-profile/' + username}" th:method="put">
         <label>Bio</label>
         <input th:value="${dbUserBio}" type="text" name="bio"
@@ -45,7 +46,7 @@
                th:disabled="${!formEnabled}"><br/>
 
     <label>Link to Featured Project</label>
-    <input th:value="${dbUserProjectOne}" type="text" name="projectOne"
+    <input th:value="${dbUserProjectOne}" type="text" name="projectOneLink"
            th:disabled="${!formEnabled}"><br/>
 
 
@@ -59,7 +60,7 @@
                th:disabled="${!formEnabled}"><br/>
 
     <label>Link to Featured Project</label>
-    <input th:value="${dbUserProjectTwo}" type="text" name="projectTwo"
+    <input th:value="${dbUserProjectTwo}" type="text" name="projectTwoLink"
            th:disabled="${!formEnabled}"><br/>
 
 
@@ -68,59 +69,61 @@
 
     </form>
     <br/>
-
-    <!--  Skills Form-->
-    <form th:action="${'/edit-services/' + username}" th:method="put">
-        <label>Add Your Skills</label><br/>
-        <input th:value="${dbUserServices}" type="text" name="keyword"
-               th:disabled="${!formEnabled}"><br/>
-
-        <input th:if="${formEnabled}" type="submit"
-               value="Add Service">
-    </form>
     <!--  Services Form-->
+    <form th:action="${'/edit-services/' + username}" th:method="put">
+        <label>What you sellin?</label><br/>
+        <input  type="text" name="title"><br/>
+        <label>description</label><br/>
+        <input  type="text" name="description"><br/>
+        <label>price</label><br/>
+        <input  type="text" name="price">
+        <button type="submit">Submit services</button>
+    </form>
+    <!--  Skills Form-->
     <form th:action="${'/edit-skills/' + username}" th:method="put">
         <div class="form-check">
-            <input class="form-check-input" name="WebDevelopment" type="checkbox"  value="Web Development" id="WebDevelopment">
+            <input class="form-check-input" name="WebDevelopment" type="checkbox"  value="Web_Development" id="WebDevelopment">
             <label class="form-check-label" for="WebDevelopment">
                 Web Development
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="ServerDevelopment" type="checkbox" value="ServerDevelopment" id="ServerDevelopment">
+            <input class="form-check-input" name="ServerDevelopment" type="checkbox" value="Server_Development" id="ServerDevelopment">
             <label class="form-check-label" for="ServerDevelopment">
                 Server Development
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="Webdesign" type="checkbox" value="Web design" id="Webdesign">
+            <input class="form-check-input" name="Webdesign" type="checkbox" value="Web_design" id="Webdesign">
             <label class="form-check-label" for="Webdesign">
                 Web design
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="FullStack" type="checkbox" value="Full Stack" id="FullStack">
+            <input class="form-check-input" name="FullStack" type="checkbox" value="Full_Stack" id="FullStack">
             <label class="form-check-label" for="FullStack">
                 Full Stack
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="ApplicationDevelopment" type="checkbox" value="Application Development"
+            <input class="form-check-input" name="ApplicationDevelopment" type="checkbox" value="Application_Development"
                    id="ApplicationDevelopment">
             <label class="form-check-label" for="ApplicationDevelopment">
                 Application Development
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="Mobile" type="checkbox" value="Android/IOS"
-                   id="Android/IOS">
-            <label class="form-check-label" for="Android/IOS">
+            <input class="form-check-input" name="Mobile" type="checkbox" value="Mobile"
+                   id="Mobile">
+            <label class="form-check-label" for="Mobile">
                 Application Development
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
+    </container>
+
 </main>
 <footer>
     <p>© Copyright, Code4Me</p>

@@ -8,7 +8,9 @@ import com.javanauts.code4me.repository.AppUserRepo;
 import com.javanauts.code4me.repository.ProfileRepo;
 import com.javanauts.code4me.repository.ServiceRepo;
 import com.javanauts.code4me.repository.SkillRepo;
+import com.javanauts.code4me.service.ChargeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,8 +43,8 @@ public class UserController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Autowired
-    HttpServletRequest request;
+    @Value("${STRIPE_PUBLIC_KEY}")
+    private String stripePublicKey;
 
     @GetMapping("/")
     public String getHome(Principal p, Model m){
@@ -68,12 +70,16 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String getUserProfile(Principal p, Model m,
                                  @PathVariable String username) {
-        if (p != null) {
-            AppUser appUser = appUserRepo.findByUsername(username);
-            m.addAttribute("appUser", appUser);
-        }
+
         AppUser dbUser = appUserRepo.findByUsername(username);
         m.addAttribute("dbUser", dbUser);
+
+        List<Service> services = dbUser.getProfile().services;
+        m.addAttribute("services", services);
+
+        m.addAttribute("stripePublicKey",stripePublicKey);
+        m.addAttribute("currency", ChargeRequest.Currency.USD);
+
 
         return "profile";
     }
@@ -96,8 +102,8 @@ public class UserController {
     public RedirectView createUser(String username, String password,
                                    String firstName, String lastName, String email){
         String hashedPassword = passwordEncoder.encode(password);
-        Profile newProfile = new Profile("Enter bio here","example@github.com", "Give a project link here", "Project Description", "Give a project link here",
-                "Project description");
+        Profile newProfile = new Profile("Enter bio here","example@github.com", "Give a project title here", "Project Description", "Give a project link here",
+                "Give a project title here","Project description", "Project link");
         AppUser newUser = new AppUser(username,hashedPassword,firstName,
                 lastName,email, newProfile);
         profileRepo.save(newProfile);
@@ -155,13 +161,13 @@ public class UserController {
     }
     @PostMapping("edit-services/{username}")
     public RedirectView editServices(Model m, Principal p,
-                                   @PathVariable String username,
-                                   String description, Float price, RedirectAttributes redir){
+                                   @PathVariable String username, String title,
+                                   String description, int price){
 
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
             Profile newProfile = profileRepo.findByAppUser(appUser);
-            Service newService = new Service(description,price, newProfile);
+            Service newService = new Service(description,title,price, newProfile);
            serviceRepo.save(newService);
         }
         return new RedirectView("/profile/" + username);
