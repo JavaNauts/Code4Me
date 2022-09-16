@@ -22,36 +22,30 @@
 }
 body{
     background: #ffd60a;
+    height:100vh;
 }
-
 p{
     text-align: center;
 }
-
 #button{
     display: block;
     margin: auto;
 }
-
 form{
     width: 30%;
     display: block;
     margin: auto;
 }
-
 label{
     display: block;
     text-align: center;
     line-height: 150%;
 }
-
 .about{
     text-align: center;
     font-size: 50px;
     color: #fafbfc;
 }
-
-footer{
-    position: absolute;
-    bottom: 0;
+main{
+margin-bottom:100px;
 }

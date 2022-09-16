@@ -119,9 +119,9 @@ public class UserController {
     @PostMapping("edit-profile/{username}")
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
-                                     String gitHubLink
-            , String projectOne, String projectOneDesc,String projectOneLink, String projectTwo,
-                                     String projectTwoDesc, String projectTwoLink,
+                                     String gitHubLink, String projectOne, String projectOneDesc,
+                                     String projectOneLink,String projectTwo,
+                                     String projectTwoDesc,String projectTwoLink,
                                      RedirectAttributes redir){
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);

@@ -17,18 +17,6 @@
         <p>Are you a developer? Sign up and add your projects, skills and services. Get hired today!!</p>
         <br/><br/>
 
-        <form action="/search-skills" th:method="post">
-            <label>What are you looking for?</label>
-            <select class="form-select container-lg" name="keyword" aria-label="Default select example">
-                <option value="WebDevelopment">Web Development</option>
-                <option value="ServerDevelopment">Server Development</option>
-                <option value="Webdesign">Web design</option>
-                <option value="FullStack">Full Stack</option>
-                <option value="ApplicationDevelopment">Application Development</option>
-                <option value="Android/IOS">Android/IOS</option>
-            </select>
-            <button type="submit" id="button" class="btn btn-primary">Search</button>
-
         <form class="container-lg" action="/search-skills" th:method="post" >
             <div class="input-group  mb-3">
                 <select class="form-select " name="keyword" aria-label="Default select example">
@@ -41,7 +29,6 @@
                 </select>
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
-
         </form>
     </div>
 

@@ -10,8 +10,8 @@
 </head>
 <body>
 
-
-<header th:replace="/fragments/nav-header">>
+<!--Dev Info-->
+<header th:replace="/fragments/nav-header">
 </header>
 <main>
     <h2 id="my-profile">My Profile</h2>
@@ -23,11 +23,16 @@
             <h4 th:text="${'Username: ' + dbUser.username}"></h4>
             <h4 th:text="${'Contact Me: ' + dbUser.email}"></h4>
             <p th:text="${dbUser.profile.bio}"></p>
-            <a id="gh-link" href="${dbUser.profile.gitHubLink}">My GitHub Profile</a>
+            <a id="gh-link" th:href="@{${dbUser.profile.gitHubLink}}">My GitHub
+                Profile</a>
+
         </div>
+            <a th:href="${'/edit-profile/' + username}"
+               class="btn btn-secondary" id="edit-button">Edit Profile</a>
     </div>
 
-    <div class="container-lg">
+<!--Skills section-->
+    <div class="container-md">
         <div id="user-skills" class="container text-center">
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -35,34 +40,35 @@
                 </symbol>
             </svg>
 
-
             <div th:each="skill: ${dbUser.profile.skills}"
-                 class="alert alert-success d-flex align-items-center row"
+                 th:if="${skill.keyword}"
+                 class="alert alert-success row"
                  role="alert"
                  id="skills-div">
                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
                      aria-label="Success:">
                     <use xlink:href="#check-circle-fill"/>
                 </svg>
-
-
                 <div th:text="${skill.keyword}" id="skill" class="col-6 col-sm-3">
                 </div>
 
             </div>
         </div>
     </div>
-    <div class="container-md">
+    <section id="profile-cards">
+    <div class="container-md" id="service-cards">
         <container class="d-inline-flex p-2 " th:each="service: ${services}">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;" id="service-card">
                 <img src="../Coding_pic.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 th:text="${service.description}" class="card-title">Card title</h5>
-                    <p th:text="${service.price}" class="card-text"/><br>
+                    <h5 th:text="${service.description}" class="card-title"
+                        id="service-card-desc">Card
+                        title</h5>
+                    <p th:text="'$ '+${service.price}+'.00'"
+                       class="card-text" id="service-price"></p><br>
                     <form action='/charge' method='POST' id='checkout-form'>
-                        <input type='hidden'  th:value='${service.price*100}' name='amount'/>
-<!--                        <label>Price:<span th:text='${service.price}'/></label>-->
-                        <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+                        <input type='hidden'  th:value='${service.price*100}'
+                               name='amount'/>
                         <script
                                 src='https://checkout.stripe.com/checkout.js'
                                 class='stripe-button'
@@ -77,8 +83,7 @@
                                 data-zip-code='false'>
                         </script>
                     </form>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
                             crossorigin="anonymous"></script>
                 </div>
             </div>
@@ -87,44 +92,26 @@
     <div id="project-cards">
         <div id="project1-card" class="card" style="width: 20rem;">
             <div id="project-1" class="card-body">
-                <h3 class="card-title">Featured Project</h3>
-                <a class="card-link" href="${dbUser.profile.projectOne}">Link to
-                    Project</a>
+                <h3 class="card-title" th:text="${dbUser.profile.projectOne}"></h3>
+                <a class="card-link" th:href="@{${dbUser.profile.projectOneLink}}"
+                   th:text="${dbUser.profile.projectOneLink}"></a>
                 <p class="card-text" th:text="${dbUser.profile.projectOneDesc}"></p>
             </div>
         </div>
 
         <div id="project2-card" class="card" style="width: 20rem;">
             <div id="project-2" class="card-body">
-                <h3 class="card-title">Featured Project</h3>
-                <a class="card-link" href="${dbUser.profile.projectTwo}">Link to
-                    Project</a>
+                <h3 class="card-title" th:text="${dbUser.profile.projectTwo}"></h3>
+                <a class="card-link" th:href="@{${dbUser.profile.projectTwoLink}}"
+                   th:text="${dbUser.profile.projectOneLink}"></a>
                 <p class="card-text" th:text="${dbUser.profile.projectTwoDesc}"></p>
             </div>
         </div>
     </div>
+</section>
 </main>
-<<<<<<< HEAD
-<footer>
-    <ul class="nav justify-content-start">
-        <li class="nav-item">
-            <a id="foot-nav1" class="nav-link active" aria-current="page"
-               href="https://github.com/JavaNauts/Code4Me">About
-                Code4Me</a>
-        </li>
-        <li class="nav-item">
-            <a id="foot-nav2" class="nav-link active" aria-current="page"
-               href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a id="copyright" class="nav-link disabled" aria-disabled="true"
-               href="#">© Copyright
-                JavaNauts 2022</a>
-        </li>
-    </ul>
-=======
+
 <footer th:replace="/fragments/footer">
->>>>>>> 0d9306f2d9113a935a26ca137d432c8aa71ef9dc
 </footer>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
