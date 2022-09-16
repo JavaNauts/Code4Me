@@ -55,14 +55,17 @@ display:flex;
 justify-content:space-around;
 }
 
-#skill{
-width: 8rem;
-display:inline;
+#skills-div{
 margin-left:.5rem;
 margin-right:.5rem;
 }
 
+#skill{
+width: 8rem;
+display:inline;
+}
+
 .container-lg{
-height: 30rem;
+height: 10rem;
 }
 

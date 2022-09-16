@@ -10,30 +10,8 @@
 </head>
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="../Logo.png" id="header-logo" alt="Code4Me logo"
-                     width="112" height="125" class="d-inline-block align-text-top">
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/signup">Sign-Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">Log-In</a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="${'/edit-profile/' + username}"
-                       class="nav-link" aria-current="page">Edit Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
+<header th:replace="/fragments/nav-header">>
 </header>
 <main>
     <h2 id="my-profile">My Profile</h2>
@@ -57,6 +35,7 @@
                 </symbol>
             </svg>
 
+
             <div th:each="skill: ${dbUser.profile.skills}"
                  class="alert alert-success d-flex align-items-center row"
                  role="alert"
@@ -65,6 +44,7 @@
                      aria-label="Success:">
                     <use xlink:href="#check-circle-fill"/>
                 </svg>
+
 
                 <div th:text="${skill.keyword}" id="skill" class="col-6 col-sm-3">
                 </div>
@@ -124,6 +104,7 @@
         </div>
     </div>
 </main>
+<<<<<<< HEAD
 <footer>
     <ul class="nav justify-content-start">
         <li class="nav-item">
@@ -141,6 +122,9 @@
                 JavaNauts 2022</a>
         </li>
     </ul>
+=======
+<footer th:replace="/fragments/footer">
+>>>>>>> 0d9306f2d9113a935a26ca137d432c8aa71ef9dc
 </footer>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
