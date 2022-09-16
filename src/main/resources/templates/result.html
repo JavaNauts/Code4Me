@@ -4,7 +4,7 @@
     <title>Result</title>
 </head>
 <body>
-<header th:replace="/fragments/nav-header">
+<header th:replace="fragments/nav-header">
 </header>
 <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
 <div th:unless='${error}'>
