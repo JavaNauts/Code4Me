@@ -120,8 +120,9 @@ public class UserController {
     public RedirectView editUserInfo(Model m, Principal p,
                                      @PathVariable String username, String bio,
                                      String gitHubLink
-            , String projectOne, String projectOneDesc, String projectTwo,
-                                     String projectTwoDesc,
+            , String projectOne, String projectOneDesc,
+                                     String projectOneLink,String projectTwo,
+                                     String projectTwoDesc,String projectTwoLink,
                                      RedirectAttributes redir){
         if(p != null && p.getName().equals(username)){
             AppUser appUser = appUserRepo.findByUsername(username);
@@ -130,8 +131,10 @@ public class UserController {
             newProfile.setGitHubLink(gitHubLink);
             newProfile.setProjectOne(projectOne);
             newProfile.setProjectOneDesc(projectOneDesc);
+            newProfile.setProjectOneLink(projectOneLink);
             newProfile.setProjectTwo(projectTwo);
             newProfile.setProjectTwoDesc(projectTwoDesc);
+            newProfile.setProjectTwoLink(projectTwoLink);
             profileRepo.save(newProfile);
         } else {
             redir.addFlashAttribute("errorMessage", "Cannot edit another user's " +

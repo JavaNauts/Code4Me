@@ -35,17 +35,34 @@ color:#f2f2f2;
 
 #user-info2{
 margin-left: 2rem;
+width: 50%;
 }
 
 #project-cards{
-display:flex;
-justify-content:space-around;
+
 }
 
-.card-body{
-background-color:#ffc30080;
+#service-card{
+background-color:#003566;
 }
 
+#service-card-desc{
+color:#ffc300;
+height:5rem;
+}
+
+#service-price{
+color:#f2f2f2;
+}
+#project1-card, #project2-card{
+background-color:#ffc300;
+margin-right:2rem;
+margin-top:.5rem;
+}
+
+#project1-card{
+margin-bottom: 1rem;
+}
 .card-text{
 margin-top:1rem;
 }
@@ -55,14 +72,11 @@ display:flex;
 justify-content:space-around;
 }
 
-#skills-div{
-margin-left:.5rem;
-margin-right:.5rem;
-}
-
 #skill{
-width: 8rem;
-display:inline;
+width: 10rem;
+display:block;
+margin:auto;
+text-align:center;
 }
 
 .container-lg{
@@ -72,6 +86,17 @@ height: 10rem;
 #edit-button{
 height:2.5rem;
 width: 10rem;
-margin-left: 50%;
+margin-left: 40%;
 }
+
+#profile-cards{
+margin-top:5rem;
+margin-bottom:7rem;
+padding-top: 2rem;
+padding-bottom:2rem;
+background-color:#8a93a1;
+display:flex;
+justify-content:flex-start;
+}
+
 
